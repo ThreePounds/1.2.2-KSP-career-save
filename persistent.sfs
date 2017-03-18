@@ -2,7 +2,7 @@ GAME
 {
 	version = 1.2.2
 	Title = WingNuts Space Ltd (CAREER)
-	Description = No description available.
+	Description = a modded career game with hard settings
 	linkURL = 
 	linkCaption = 
 	Mode = CAREER
@@ -21,8 +21,8 @@ GAME
 		preset = Custom
 		FLIGHT
 		{
-			CanQuickSave = True
-			CanQuickLoad = True
+			CanQuickSave = False
+			CanQuickLoad = False
 			CanAutoSave = True
 			CanUseMap = True
 			CanSwitchVesselsNear = True
