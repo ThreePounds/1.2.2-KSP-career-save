@@ -33,6 +33,8 @@ PART
 	link = GooExperiment_4294498264
 	link = sensorThermometer_4294229900
 	link = sensorBarometer_4294228624
+	link = sensorBarometer_4294503008
+	link = sensorBarometer_4294502936
 	attN = bottom,HeatShield1_4294504552
 	attN = top,parachuteSingle_4294347406
 	EVENTS
@@ -2159,6 +2161,168 @@ PART
 	rot = 0.0696567297,0.908445656,-0.168166205,0.37629056
 	attRot = 0,0,0,1
 	attRot0 = 0.0696567297,0.908445656,-0.168166205,0.37629056
+	mir = 1,1,1
+	symMethod = Radial
+	autostrutMode = Off
+	rigidAttachment = False
+	istg = -1
+	resPri = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = -1
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = 0,0,0
+	srfN = srfAttach,mk1pod_4294348418
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnviroSensor
+		isEnabled = True
+		sensorActive = False
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleScienceExperiment
+		isEnabled = True
+		Deployed = False
+		Inoperable = False
+		cooldownToGo = 0
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			DeployAction
+			{
+				actionGroup = None
+			}
+			ResetAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+}
+PART
+{
+	part = sensorBarometer_4294503008
+	partName = Part
+	pos = 0.160074621,16.0277309,0.292452544
+	attPos = 0,0,0
+	attPos0 = 0.318956405,0.143356323,0.318956345
+	rot = -0.0696567893,0.908445597,-0.16816631,-0.37629059
+	attRot = 0,0,0,1
+	attRot0 = -0.0696567893,0.908445597,-0.16816631,-0.37629059
+	mir = 1,1,1
+	symMethod = Radial
+	autostrutMode = Off
+	rigidAttachment = False
+	istg = -1
+	resPri = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = -1
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = 0,0,0
+	srfN = srfAttach,mk1pod_4294348418
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnviroSensor
+		isEnabled = True
+		sensorActive = False
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleScienceExperiment
+		isEnabled = True
+		Deployed = False
+		Inoperable = False
+		cooldownToGo = 0
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			DeployAction
+			{
+				actionGroup = None
+			}
+			ResetAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+}
+PART
+{
+	part = sensorBarometer_4294502936
+	partName = Part
+	pos = -0.479037821,16.0392628,0.293652177
+	attPos = 0,0,0
+	attPos0 = -0.320156038,0.154888153,0.320155978
+	rot = 0.0696567446,0.908445656,-0.168166235,0.376290619
+	attRot = 0,0,0,1
+	attRot0 = 0.0696567446,0.908445656,-0.168166235,0.376290619
 	mir = 1,1,1
 	symMethod = Radial
 	autostrutMode = Off
