@@ -1,15 +1,15 @@
-ship = Hazelnut KeL A31
+ship = Hazelnut KeL A30
 version = 1.2.2
-description = We will try to go higher. Above the 250km mark to get a bit more science.
+description = By goind sideways really really fast .... you get the idea.
 type = VAB
-size = 2.31920362,16.7755947,2.31920409
+size = 2.31920338,15.6430931,2.31920409
 PART
 {
 	part = mk1pod_4294348418
 	partName = Part
-	pos = -0.158881783,15.8843746,-0.0265037976
+	pos = -0.221795738,15.1855574,-0.021225214
 	attPos = 0,0,0
-	attPos0 = -0.158881783,15.8843746,-0.0265037976
+	attPos0 = -0.221795738,15.1855574,-0.021225214
 	rot = 0,0,0,1
 	attRot = 0,0,0,1
 	attRot0 = 0,0,0,1
@@ -28,10 +28,10 @@ PART
 	modMass = 0
 	modSize = 0,0,0
 	link = parachuteSingle_4294347406
-	link = HeatShield1_4294504552
 	link = GooExperiment_4294345282
-	link = GooExperiment_4294498264
-	attN = bottom,HeatShield1_4294504552
+	link = GooExperiment_4294345224
+	link = stackDecoupler_4294342544
+	attN = bottom,stackDecoupler_4294342544
 	attN = top,parachuteSingle_4294347406
 	EVENTS
 	{
@@ -277,7 +277,7 @@ PART
 {
 	part = parachuteSingle_4294347406
 	partName = Part
-	pos = -0.158881783,16.541832,-0.0265037976
+	pos = -0.221795738,15.8430147,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,0.657457352,0
 	rot = 0,0,0,1
@@ -384,31 +384,30 @@ PART
 }
 PART
 {
-	part = HeatShield1_4294504552
+	part = GooExperiment_4294345282
 	partName = Part
-	pos = -0.158881783,15.4573364,-0.0265037976
+	pos = -0.56181252,15.3675156,-0.0212252438
 	attPos = 0,0,0
-	attPos0 = 0,-0.427038193,0
-	rot = 0,0,0,1
+	attPos0 = -0.340016782,0.181958199,-3.00450296E-08
+	rot = 0.12870881,0.69529444,-0.128708899,0.695293963
 	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
+	attRot0 = 0.12870881,0.69529444,-0.128708899,0.695293963
 	mir = 1,1,1
 	symMethod = Radial
 	autostrutMode = Off
 	rigidAttachment = False
 	istg = -1
 	resPri = 0
-	dstg = 1
-	sidx = 1
-	sqor = 0
-	sepI = 0
-	attm = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = -1
+	attm = 1
 	modCost = 0
 	modMass = 0
 	modSize = 0,0,0
-	link = stackDecoupler_4294342544
-	attN = direct,stackDecoupler_4294342544
-	attN = top,mk1pod_4294348418
+	sym = GooExperiment_4294345224
+	srfN = srfAttach,mk1pod_4294348418
 	EVENTS
 	{
 	}
@@ -420,46 +419,14 @@ PART
 	}
 	MODULE
 	{
-		name = ModuleJettison
+		name = ModuleAnimateGeneric
 		isEnabled = True
-		isJettisoned = True
-		shroudHideOverride = False
-		stagingEnabled = False
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-			JettisonAction
-			{
-				actionGroup = None
-			}
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleAblator
-		isEnabled = True
-		nominalAmountRecip = -1
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleColorChanger
-		isEnabled = True
-		animState = False
+		aniState = LOCKED
+		animSwitch = True
+		animTime = 0
+		animSpeed = 1
+		deployPercent = 100
+		animationIsDisabled = False
 		stagingEnabled = True
 		EVENTS
 		{
@@ -469,7 +436,6 @@ PART
 			ToggleAction
 			{
 				actionGroup = None
-				active = False
 			}
 		}
 		UPGRADESAPPLIED
@@ -478,17 +444,83 @@ PART
 	}
 	MODULE
 	{
-		name = ModuleDecouple
+		name = ModuleScienceExperiment
 		isEnabled = True
-		ejectionForcePercent = 100
-		isDecoupled = False
-		stagingEnabled = False
+		Deployed = False
+		Inoperable = False
+		cooldownToGo = 0
+		stagingEnabled = True
 		EVENTS
 		{
 		}
 		ACTIONS
 		{
-			DecoupleAction
+			DeployAction
+			{
+				actionGroup = None
+			}
+			ResetAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+}
+PART
+{
+	part = GooExperiment_4294345224
+	partName = Part
+	pos = 0.118221045,15.3675156,-0.021225214
+	attPos = 0,0,0
+	attPos0 = 0.340016782,0.181958199,3.19818394E-10
+	rot = -0.128708899,0.695293903,-0.12870881,-0.695294499
+	attRot = 0,0,0,1
+	attRot0 = -0.128708899,0.695293903,-0.12870881,-0.695294499
+	mir = 1,1,1
+	symMethod = Radial
+	autostrutMode = Off
+	rigidAttachment = False
+	istg = -1
+	resPri = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = -1
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = 0,0,0
+	sym = GooExperiment_4294345282
+	srfN = srfAttach,mk1pod_4294348418
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleAnimateGeneric
+		isEnabled = True
+		aniState = LOCKED
+		animSwitch = True
+		animTime = 0
+		animSpeed = 1
+		deployPercent = 100
+		animationIsDisabled = False
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			ToggleAction
 			{
 				actionGroup = None
 			}
@@ -499,53 +531,38 @@ PART
 	}
 	MODULE
 	{
-		name = ModuleTestSubject
+		name = ModuleScienceExperiment
 		isEnabled = True
+		Deployed = False
+		Inoperable = False
+		cooldownToGo = 0
 		stagingEnabled = True
 		EVENTS
 		{
 		}
 		ACTIONS
 		{
+			DeployAction
+			{
+				actionGroup = None
+			}
+			ResetAction
+			{
+				actionGroup = None
+			}
 		}
 		UPGRADESAPPLIED
 		{
 		}
-	}
-	MODULE
-	{
-		name = ModuleLiftingSurface
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	RESOURCE
-	{
-		name = Ablator
-		amount = 20.000000298023224
-		maxAmount = 200
-		flowState = True
-		isTweakable = True
-		hideFlow = False
-		isVisible = True
-		flowMode = Both
 	}
 }
 PART
 {
 	part = stackDecoupler_4294342544
 	partName = Part
-	pos = -0.158881783,15.3922844,-0.0265037976
+	pos = -0.221795738,14.7154675,-0.021225214
 	attPos = 0,0,0
-	attPos0 = 0,-0.0650520325,0
+	attPos0 = 0,-0.470089912,0
 	rot = 0,0,0,1
 	attRot = 0,0,0,1
 	attRot0 = 0,0,0,1
@@ -555,7 +572,7 @@ PART
 	rigidAttachment = False
 	istg = 1
 	resPri = 0
-	dstg = 3
+	dstg = 1
 	sidx = 0
 	sqor = 1
 	sepI = 1
@@ -565,7 +582,7 @@ PART
 	modSize = 0,0,0
 	link = fuelTankSmall_4294327456
 	attN = bottom,fuelTankSmall_4294327456
-	attN = top,HeatShield1_4294504552
+	attN = top,mk1pod_4294348418
 	EVENTS
 	{
 	}
@@ -644,7 +661,7 @@ PART
 {
 	part = fuelTankSmall_4294327456
 	partName = Part
-	pos = -0.158881783,14.7040396,-0.0265037976
+	pos = -0.221795738,14.0272226,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-0.68824482,0
 	rot = 0,0,0,1
@@ -656,7 +673,7 @@ PART
 	rigidAttachment = False
 	istg = 1
 	resPri = 0
-	dstg = 4
+	dstg = 2
 	sidx = -1
 	sqor = -1
 	sepI = 1
@@ -766,7 +783,7 @@ PART
 {
 	part = fuelTankSmall_4294327268
 	partName = Part
-	pos = -0.158881783,13.5935392,-0.0265037976
+	pos = -0.221795738,12.9167223,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-1.11050034,0
 	rot = 0,0,0,1
@@ -778,7 +795,7 @@ PART
 	rigidAttachment = False
 	istg = 1
 	resPri = 0
-	dstg = 4
+	dstg = 2
 	sidx = -1
 	sqor = -1
 	sepI = 1
@@ -888,7 +905,7 @@ PART
 {
 	part = fuelTankSmall_4294327160
 	partName = Part
-	pos = -0.158881783,12.4830389,-0.0265037976
+	pos = -0.221795738,11.806222,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-1.11050034,0
 	rot = 0,0,0,1
@@ -900,7 +917,7 @@ PART
 	rigidAttachment = False
 	istg = 1
 	resPri = 0
-	dstg = 4
+	dstg = 2
 	sidx = -1
 	sqor = -1
 	sepI = 1
@@ -1010,7 +1027,7 @@ PART
 {
 	part = fuelTankSmall_4294321682
 	partName = Part
-	pos = -0.158881783,11.3725386,-0.0265037976
+	pos = -0.221795738,10.6957216,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-1.11050034,0
 	rot = 0,0,0,1
@@ -1022,129 +1039,7 @@ PART
 	rigidAttachment = False
 	istg = 1
 	resPri = 0
-	dstg = 4
-	sidx = -1
-	sqor = -1
-	sepI = 1
-	attm = 0
-	modCost = -4.76837158E-06
-	modMass = -2.79396772E-09
-	modSize = 0,0,0
-	link = fuelTankSmall_4294500186
-	attN = top,fuelTankSmall_4294327160
-	attN = bottom,fuelTankSmall_4294500186
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleB9PartSwitch
-		isEnabled = True
-		currentSubtypeIndex = 0
-		stagingEnabled = True
-		currentSubtypeName = LF/O
-		moduleID = fuelSwitch
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleCryoTank
-		isEnabled = True
-		LastUpdateTime = 0
-		CoolingEnabled = True
-		BoiloffOccuring = False
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-			EnableAction
-			{
-				actionGroup = None
-			}
-			DisableAction
-			{
-				actionGroup = None
-			}
-			ToggleAction
-			{
-				actionGroup = None
-			}
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleB9PartInfo
-		isEnabled = True
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	RESOURCE
-	{
-		name = LiquidFuel
-		amount = 90
-		maxAmount = 90
-		flowState = True
-		isTweakable = True
-		hideFlow = False
-		isVisible = True
-		flowMode = Both
-	}
-	RESOURCE
-	{
-		name = Oxidizer
-		amount = 110
-		maxAmount = 110
-		flowState = True
-		isTweakable = True
-		hideFlow = False
-		isVisible = True
-		flowMode = Both
-	}
-}
-PART
-{
-	part = fuelTankSmall_4294500186
-	partName = Part
-	pos = -0.158881783,10.2620382,-0.0265037976
-	attPos = 0,0,0
-	attPos0 = 0,-1.11050034,0
-	rot = 0,0,0,1
-	attRot = 0,0,0,1
-	attRot0 = 0,0,0,1
-	mir = 1,1,1
-	symMethod = Radial
-	autostrutMode = Off
-	rigidAttachment = False
-	istg = 1
-	resPri = 0
-	dstg = 4
+	dstg = 2
 	sidx = -1
 	sqor = -1
 	sepI = 1
@@ -1153,7 +1048,7 @@ PART
 	modMass = -2.79396772E-09
 	modSize = 0,0,0
 	link = liquidEngine2_4294331826
-	attN = top,fuelTankSmall_4294321682
+	attN = top,fuelTankSmall_4294327160
 	attN = bottom,liquidEngine2_4294331826
 	EVENTS
 	{
@@ -1254,7 +1149,7 @@ PART
 {
 	part = liquidEngine2_4294331826
 	partName = Part
-	pos = -0.158881783,8.80496216,-0.0265037976
+	pos = -0.221795738,9.23864555,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-1.45707607,0
 	rot = 0,0,0,1
@@ -1266,16 +1161,16 @@ PART
 	rigidAttachment = False
 	istg = 2
 	resPri = 0
-	dstg = 4
-	sidx = 0
-	sqor = 2
+	dstg = 2
+	sidx = 1
+	sqor = 3
 	sepI = 1
 	attm = 0
 	modCost = 0
 	modMass = 0
 	modSize = 0,0,0
 	link = stackDecoupler_4294326032
-	attN = top,fuelTankSmall_4294500186
+	attN = top,fuelTankSmall_4294321682
 	attN = bottom,stackDecoupler_4294326032
 	EVENTS
 	{
@@ -1453,7 +1348,7 @@ PART
 {
 	part = stackDecoupler_4294326032
 	partName = Part
-	pos = -0.158881783,8.02198792,-0.0265037976
+	pos = -0.221795738,8.45567131,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-0.782974243,0
 	rot = 0,0,0,1
@@ -1465,9 +1360,9 @@ PART
 	rigidAttachment = False
 	istg = 2
 	resPri = 0
-	dstg = 5
-	sidx = 1
-	sqor = 2
+	dstg = 3
+	sidx = 0
+	sqor = 3
 	sepI = 2
 	attm = 0
 	modCost = 0
@@ -1554,7 +1449,7 @@ PART
 {
 	part = solidBooster1-1_4294319622
 	partName = Part
-	pos = -0.158881783,3.96899319,-0.0265037976
+	pos = -0.221795738,4.40267658,-0.021225214
 	attPos = 0,0,0
 	attPos0 = 0,-4.05299473,0
 	rot = 0,0,0,1
@@ -1566,9 +1461,9 @@ PART
 	rigidAttachment = False
 	istg = 3
 	resPri = 0
-	dstg = 6
+	dstg = 4
 	sidx = 0
-	sqor = 3
+	sqor = 4
 	sepI = 2
 	attm = 0
 	modCost = 0
@@ -1684,7 +1579,7 @@ PART
 {
 	part = basicFin_4294315260
 	partName = Part
-	pos = -0.76848352,0.904248238,-0.0265037604
+	pos = -0.831397474,1.33793163,-0.0212251768
 	attPos = 0,0,0
 	attPos0 = -0.609601736,-3.06474495,3.7252903E-08
 	rot = 0,0,0,1
@@ -1696,7 +1591,7 @@ PART
 	rigidAttachment = False
 	istg = 3
 	resPri = 0
-	dstg = 6
+	dstg = 4
 	sidx = -1
 	sqor = -1
 	sepI = 2
@@ -1737,7 +1632,7 @@ PART
 {
 	part = basicFin_4294315010
 	partName = Part
-	pos = -0.158881783,0.904248238,0.583097875
+	pos = -0.221795738,1.33793163,0.588376462
 	attPos = 0,0,0
 	attPos0 = 0,-3.06474495,0.609601676
 	rot = 0,0.707106829,0,0.707106829
@@ -1749,7 +1644,7 @@ PART
 	rigidAttachment = False
 	istg = 3
 	resPri = 0
-	dstg = 6
+	dstg = 4
 	sidx = -1
 	sqor = -1
 	sepI = 2
@@ -1790,7 +1685,7 @@ PART
 {
 	part = basicFin_4294314970
 	partName = Part
-	pos = 0.450719953,0.904248238,-0.026503887
+	pos = 0.387805998,1.33793163,-0.0212253034
 	attPos = 0,0,0
 	attPos0 = 0.609601736,-3.06474495,-8.94069672E-08
 	rot = 0,1,0,-4.37113883E-08
@@ -1802,7 +1697,7 @@ PART
 	rigidAttachment = False
 	istg = 3
 	resPri = 0
-	dstg = 6
+	dstg = 4
 	sidx = -1
 	sqor = -1
 	sepI = 2
@@ -1843,7 +1738,7 @@ PART
 {
 	part = basicFin_4294314930
 	partName = Part
-	pos = -0.158881858,0.904248238,-0.636105478
+	pos = -0.221795812,1.33793163,-0.63082689
 	attPos = 0,0,0
 	attPos0 = -7.4505806E-08,-3.06474495,-0.609601676
 	rot = 0,0.707106829,0,-0.707106829
@@ -1855,7 +1750,7 @@ PART
 	rigidAttachment = False
 	istg = 3
 	resPri = 0
-	dstg = 6
+	dstg = 4
 	sidx = -1
 	sqor = -1
 	sepI = 2
@@ -1886,180 +1781,6 @@ PART
 		}
 		ACTIONS
 		{
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-}
-PART
-{
-	part = GooExperiment_4294345282
-	partName = Part
-	pos = -0.395715147,16.3479996,-0.0265038498
-	attPos = 0,0,0
-	attPos0 = -0.242784083,0.432939529,-3.7252903E-08
-	rot = -0.00601699296,-0.707081437,0.00601699948,-0.70708096
-	attRot = 0.173648059,5.92160321E-09,-1.81146265E-10,-0.984807789
-	attRot0 = -0.00601699296,-0.707081437,0.00601699948,-0.70708096
-	mir = 1,1,1
-	symMethod = Radial
-	autostrutMode = Off
-	rigidAttachment = False
-	istg = -1
-	resPri = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = -1
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = 0,0,0
-	sym = GooExperiment_4294498264
-	srfN = srfAttach,mk1pod_4294348418
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleAnimateGeneric
-		isEnabled = True
-		aniState = LOCKED
-		animSwitch = True
-		animTime = 0
-		animSpeed = 1
-		deployPercent = 100
-		animationIsDisabled = False
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleScienceExperiment
-		isEnabled = True
-		Deployed = False
-		Inoperable = False
-		cooldownToGo = 0
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-			DeployAction
-			{
-				actionGroup = None
-			}
-			ResetAction
-			{
-				actionGroup = None
-			}
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-}
-PART
-{
-	part = GooExperiment_4294498264
-	partName = Part
-	pos = 0.0779515803,16.3479996,-0.026503766
-	attPos = 0,0,0
-	attPos0 = 0.242784083,0.432939529,1.67638063E-08
-	rot = 0.00601699995,-0.707080901,0.0060169925,0.707081497
-	attRot = 0.173648059,5.92160321E-09,-1.81146265E-10,-0.984807789
-	attRot0 = -0.128708899,0.695293903,-0.12870881,-0.695294499
-	mir = 1,1,1
-	symMethod = Radial
-	autostrutMode = Off
-	rigidAttachment = False
-	istg = -1
-	resPri = 0
-	dstg = 0
-	sidx = -1
-	sqor = -1
-	sepI = -1
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = 0,0,0
-	sym = GooExperiment_4294345282
-	srfN = srfAttach,mk1pod_4294348418
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = ModuleAnimateGeneric
-		isEnabled = True
-		aniState = LOCKED
-		animSwitch = True
-		animTime = 0
-		animSpeed = 1
-		deployPercent = 100
-		animationIsDisabled = False
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-		}
-		UPGRADESAPPLIED
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleScienceExperiment
-		isEnabled = True
-		Deployed = False
-		Inoperable = False
-		cooldownToGo = 0
-		stagingEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-			DeployAction
-			{
-				actionGroup = None
-			}
-			ResetAction
-			{
-				actionGroup = None
-			}
 		}
 		UPGRADESAPPLIED
 		{

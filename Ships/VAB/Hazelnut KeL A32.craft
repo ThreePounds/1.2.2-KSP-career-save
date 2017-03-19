@@ -1,6 +1,6 @@
-ship = Hazelnut KeL A31
+ship = Hazelnut KeL A32
 version = 1.2.2
-description = We will try to go higher. Above the 250km mark to get a bit more science.
+description = We will try to go higher. Above the 250km mark to get a bit more science. Comes with more Science.
 type = VAB
 size = 2.31920362,16.7755947,2.31920409
 PART
@@ -31,6 +31,8 @@ PART
 	link = HeatShield1_4294504552
 	link = GooExperiment_4294345282
 	link = GooExperiment_4294498264
+	link = sensorThermometer_4294229900
+	link = sensorBarometer_4294228624
 	attN = bottom,HeatShield1_4294504552
 	attN = top,parachuteSingle_4294347406
 	EVENTS
@@ -2024,6 +2026,168 @@ PART
 		animSpeed = 1
 		deployPercent = 100
 		animationIsDisabled = False
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleScienceExperiment
+		isEnabled = True
+		Deployed = False
+		Inoperable = False
+		cooldownToGo = 0
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			DeployAction
+			{
+				actionGroup = None
+			}
+			ResetAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+}
+PART
+{
+	part = sensorThermometer_4294229900
+	partName = Part
+	pos = 0.0804354548,16.3262978,0.212813392
+	attPos = 0,0,0
+	attPos0 = 0.239317238,0.441923141,0.239317194
+	rot = -0.0696567893,0.908445656,-0.168166324,-0.37629059
+	attRot = 0,0,0,1
+	attRot0 = -0.0696567893,0.908445656,-0.168166324,-0.37629059
+	mir = 1,1,1
+	symMethod = Radial
+	autostrutMode = Off
+	rigidAttachment = False
+	istg = -1
+	resPri = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = -1
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = 0,0,0
+	srfN = srfAttach,mk1pod_4294348418
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnviroSensor
+		isEnabled = True
+		sensorActive = False
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleScienceExperiment
+		isEnabled = True
+		Deployed = False
+		Inoperable = False
+		cooldownToGo = 0
+		stagingEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+			DeployAction
+			{
+				actionGroup = None
+			}
+			ResetAction
+			{
+				actionGroup = None
+			}
+		}
+		UPGRADESAPPLIED
+		{
+		}
+	}
+}
+PART
+{
+	part = sensorBarometer_4294228624
+	partName = Part
+	pos = -0.401696116,16.3284187,0.216310486
+	attPos = 0,0,0
+	attPos0 = -0.242814332,0.444044113,0.242814288
+	rot = 0.0696567297,0.908445656,-0.168166205,0.37629056
+	attRot = 0,0,0,1
+	attRot0 = 0.0696567297,0.908445656,-0.168166205,0.37629056
+	mir = 1,1,1
+	symMethod = Radial
+	autostrutMode = Off
+	rigidAttachment = False
+	istg = -1
+	resPri = 0
+	dstg = 0
+	sidx = -1
+	sqor = -1
+	sepI = -1
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = 0,0,0
+	srfN = srfAttach,mk1pod_4294348418
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = ModuleEnviroSensor
+		isEnabled = True
+		sensorActive = False
 		stagingEnabled = True
 		EVENTS
 		{
